@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import React from 'react';
 
 import { useState , useEffect} from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 import useSWR from 'swr';
 import axios from 'axios';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
@@ -15,6 +16,7 @@ import {
 
 export default function Profile() {
  
+  const navigate = useNavigate();
 
   const [object,setobject]=useState({});
 
@@ -188,10 +190,8 @@ if(products && user) {return (
                     <h4 className="mb-1 me-1">Rs {product.Price_per_unit} per {product.Unit}</h4>
                   </div>
                   <div className="d-flex flex-column mt-4">
-                    <MDBBtn color="primary" size="sm" onClick={() => handleDetailsClick(product._id)}>
-                      Remove
-                    </MDBBtn>
-                    <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)}>
+                    <MDBBtn color="primary" size="sm" onClick={() => handleDetailsClick(product._id)}>Details</MDBBtn>
+                    <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)} style={{marginTop:"10px"}}>
                       Remove
                     </MDBBtn>
 

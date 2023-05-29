@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import React from 'react';
 
 import { useState , useEffect} from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 import useSWR from 'swr';
 import axios from 'axios';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
@@ -15,6 +16,8 @@ import {
 
 export default function FarmerProfile() {
  // console.log(localStorage.getItem('token'));
+
+  const navigate = useNavigate();
 
   const [object,setobject]=useState({});
 
@@ -191,7 +194,7 @@ if(products && user) {return (
                   </div>
                   <div className="d-flex flex-column mt-4">
                     <MDBBtn color="primary" size="sm" onClick={() => handleDetailsClick(product._id)}>Details</MDBBtn>
-                    <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)}>
+                    <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)} style={{marginTop:"10px"}}>
                       Remove
                     </MDBBtn>
 
