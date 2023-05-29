@@ -185,6 +185,7 @@ if(products && user) {return (
                     <h4 className="mb-1 me-1">Rs {product.Price_per_unit} per {product.Unit}</h4>
                   </div>
                   <div className="d-flex flex-column mt-4">
+                    <MDBBtn color="primary" size="sm" onClick={() => handleDetailsClick(product._id)}>Details</MDBBtn>
                     <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)}>
                       Remove
                     </MDBBtn>
