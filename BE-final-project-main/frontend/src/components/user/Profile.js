@@ -14,13 +14,13 @@ import {
 
 
 export default function Profile() {
-  console.log('hello');
+ 
 
   const [object,setobject]=useState({});
 
   const fetchaccount= async ()=>
   {
-    console.log("hello");
+   
     try{
       const response=await axios.get("http://localhost:8001/user/myaccount",
       {
@@ -38,10 +38,16 @@ export default function Profile() {
     
   }
 
+      const handleDetailsClick = (Id) => {
+
+      console.log(Id);
+
+      navigate('/product/'+ Id);
+    };
 
     React.useEffect(()=>
       {
-          console.log("hell");
+          
           fetchaccount();
       },[])
 
@@ -182,6 +188,9 @@ if(products && user) {return (
                     <h4 className="mb-1 me-1">Rs {product.Price_per_unit} per {product.Unit}</h4>
                   </div>
                   <div className="d-flex flex-column mt-4">
+                    <MDBBtn color="primary" size="sm" onClick={() => handleDetailsClick(product._id)}>
+                      Remove
+                    </MDBBtn>
                     <MDBBtn color="primary" size="sm" onClick={() => handleDeleteClick(product._id)}>
                       Remove
                     </MDBBtn>
