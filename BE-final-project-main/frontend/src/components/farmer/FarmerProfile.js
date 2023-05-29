@@ -14,7 +14,7 @@ import {
 
 
 export default function FarmerProfile() {
-  console.log(localStorage.getItem('token'));
+ // console.log(localStorage.getItem('token'));
 
   const [object,setobject]=useState({});
 
@@ -40,7 +40,13 @@ export default function FarmerProfile() {
     }
     
   }
+  
+      const handleDetailsClick = (Id) => {
 
+      console.log(Id);
+
+      navigate('/product/'+ Id);
+    };
 
     React.useEffect(()=>
       {
