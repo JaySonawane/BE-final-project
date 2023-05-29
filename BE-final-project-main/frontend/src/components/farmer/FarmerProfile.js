@@ -20,7 +20,7 @@ export default function FarmerProfile() {
 
   const fetchaccount= async ()=>
   {
-    console.log("hello");
+    
     try{
       //const token=await localStorage.getItem('token');
 
@@ -50,7 +50,6 @@ export default function FarmerProfile() {
 
     React.useEffect(()=>
       {
-          console.log("hell");
           fetchaccount();
       },[])
 
