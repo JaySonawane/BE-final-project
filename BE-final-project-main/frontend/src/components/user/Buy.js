@@ -40,7 +40,7 @@ const fetcherproducts = (url) => fetch(url,
 
       console.log(Id);
 
-      navigate('/user/buy/'+ Id);
+      navigate('/product/'+ Id);
     };
   
     const handleAddClick =async (ProdID) => {
