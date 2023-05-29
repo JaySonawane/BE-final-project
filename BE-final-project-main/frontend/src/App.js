@@ -37,9 +37,11 @@ const App = () => {
         {/* user routes */}
         <Route path="/user" element={<UserHome />} />
         <Route path="/user/buy" element={<Buy />} />
-        <Route path="/user/buy/:prodID" element={<ViewProduct />} />
         <Route path="/user/profile" element={<UserProfile />} />
-
+          
+        {/* product routes */}
+        <Route path="/product/:prodID" element={<ViewProduct />} />
+           
       </Routes>
     </div>
   )
