@@ -136,7 +136,7 @@ if(products && user) {return (
                   </div>
                 </div>
                 <div className="d-flex justify-content-between align-items-center mb-4">
-                  <MDBCardText className="lead fw-normal mb-0"><h2>Your Products</h2></MDBCardText>
+                  <MDBCardText className="lead fw-normal mb-0"><h2>Your Products For Sale</h2></MDBCardText>
                 </div>
                 {products.map((product, index) => (
       <MDBRow className="justify-content-center mb-0">
