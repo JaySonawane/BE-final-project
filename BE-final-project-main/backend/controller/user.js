@@ -159,6 +159,10 @@ module.exports.myaccount= async(req,res,next)=>
 
     const user=await User.findById(req.userId);
 
+   // console.log(user.Products.length);
+    if(user.Products.length!==0)
+    {
+       
     for(const prod_id of user.Products)
         {
             const prod=await Product.findById(prod_id.toString());
@@ -169,6 +173,7 @@ module.exports.myaccount= async(req,res,next)=>
             }
             else products_data.push(prod);
         }
+    }
 
         res.status(200).json({ products: products_data,user:user });
     }

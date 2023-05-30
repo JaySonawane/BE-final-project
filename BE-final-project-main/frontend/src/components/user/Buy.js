@@ -14,7 +14,7 @@ import {
 import useSWR from 'swr';
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import { useState , useEffect} from 'react';
 
 const fetcherproducts = (url) => fetch(url,
     {
@@ -35,6 +35,8 @@ const fetcherproducts = (url) => fetch(url,
   function Buy() {
   
     const navigate = useNavigate();
+
+    const [Products,setProducts]=useState({});
   
     const handleDetailsClick = (Id) => {
 
@@ -42,7 +44,40 @@ const fetcherproducts = (url) => fetch(url,
 
       navigate('/product/'+ Id);
     };
+
   
+    const finbyproductsbysearch=async (category)=>
+    {
+        try{
+          const response=await axios.get("http://localhost:8001/user/products/"+category,
+          {
+              headers:
+            {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+          })
+          setProducts(response.data);
+        }
+        catch(error){
+            console.error('Error:', error);
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          if(event.target.value=='')
+          {
+            finbyproductsbysearch('ALL');
+          }
+          else
+          {
+              //finbyproductsbysearch(event.target.value);
+              finbyproductsbysearch(event.target.value.charAt(0).toUpperCase()+event.target.value.slice(1).toLowerCase());
+          }
+        }
+      }
+
     const handleAddClick =async (ProdID) => {
 
       console.log(ProdID);
@@ -58,23 +93,44 @@ const fetcherproducts = (url) => fetch(url,
   
     }
   
-    const { data, error, isLoading } = useSWR('http://localhost:8001/user/products_display',fetcherproducts);
+    //const { data, error, isLoading } = useSWR('http://localhost:8001/user/products_display',fetcherproducts);
   
   
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
-  
-    const products= data.products;
+    //if (error) return <div>failed to load</div>
+    //if (isLoading) return <div>loading...</div>
+
+
+    useEffect(()=>
+    {
+        finbyproductsbysearch('ALL');
+    },[])
+
+    const products= Products.products;
     console.log(products);
-  
-    
+
   
   
     return (
     <div>
       <Navbar />
+      <MDBCol md="6" style={{margin:"35px auto auto",width:"1200px"}}>
+      <div className="input-group md-form form-sm form-1 pl-0">
+        <div className="input-group-prepend" style={{marginRight:"5px"}}>
+          <span className="input-group-text purple lighten-3" id="basic-text1" style={{background: "black"}}>
+            <MDBIcon className="text-white" icon="search" />
+          </span>
+        </div>
+        <input
+          className="form-control my-0 py-1"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          onKeyPress={handleKeyPress}
+        />
+      </div>
+      </MDBCol>
       <MDBContainer fluid>
-        {products.map((product, index) => (
+        {products && products.map((product, index) => (
         <MDBRow className="justify-content-center mb-0">
           <MDBCol md="12" xl="10">
             <MDBCard className="shadow-0 border rounded-3 mt-5 mb-3">

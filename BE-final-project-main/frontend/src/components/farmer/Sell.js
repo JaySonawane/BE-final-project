@@ -46,7 +46,8 @@ const Sell = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', crop.name);
+    //formData.append('name', crop.name);
+    formData.append('name', crop.name.charAt(0).toUpperCase()+crop.name.slice(1).toLowerCase());
     formData.append('description', crop.description);
     formData.append('quantity',crop.quantity);
     formData.append('image', crop.image);
