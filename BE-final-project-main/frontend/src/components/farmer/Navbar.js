@@ -9,6 +9,9 @@ const Navbar = () => {
     const redirectToCropRecommendation = () => {
         window.open('https://dhruvjain04-crop-predictor-model-crop-predictor-hyusq9.streamlit.app/', '_blank');
     };
+    const schemes = () => {
+        window.open('https://agricoop.nic.in/sites/default/files/FFH201819_Eng.pdf', '_blank');
+    };
 
 
     return (
@@ -19,6 +22,9 @@ const Navbar = () => {
             </h3>
             <NavLink exact className="right item" to='/farmer'>
                 <i className="home icon"></i> Home
+            </NavLink>
+            <NavLink className="item" onClick={schemes}>
+                <i></i> Schemes & Programmes
             </NavLink>
             <NavLink className="item" to='/farmer/sell'>
                 <i className="shopping cart icon"></i> Sell

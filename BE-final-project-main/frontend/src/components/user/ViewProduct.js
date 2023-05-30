@@ -58,7 +58,7 @@ const FeedbackForm = () => {
                 {
                     headers: {
                         Authorization:
-                            'Bearer' + localStorage.getItem('token') 
+                            'Bearer ' + localStorage.getItem('token') 
                     },
                 }
             );

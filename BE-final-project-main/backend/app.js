@@ -37,5 +37,5 @@ app.use((err, req, res, next) => {
     res.status(status).json({ message: message ,data:data});
 })
 
-mongoose.connect('mongodb+srv://dhruvjain6467:djrocks7@cluster0.bcqxztg.mongodb.net/portal_farmer?retryWrites=true&w=majority').
+mongoose.connect('mongodb+srv://dhruvjain6467:beproject@cluster0.bcqxztg.mongodb.net/portal_farmer?retryWrites=true&w=majority').
     then(resData => { app.listen(8001); console.log('mongoose is connected') }).catch(err => { console.log(err) })
