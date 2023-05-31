@@ -24,11 +24,151 @@ import { useState,useEffect } from "react";
 
 const API_KEY='f2ffd78139mshb9d1ae88a54cbc8p1706e6jsn3e5a3020db5b';
 
+function getWeatherIcon(weatherCode) {
+  switch (weatherCode) {
+    case 2:
+      return <i class="fas fa-sun" style={{fontSize:"20px"}}></i>; // Sunny
+    case 3:
+      return <i class="fas fa-cloud-sun" style={{fontSize:"20px"}}></i>; // Mostly sunny
+    case 4:
+      return <i class="fas fa-cloud-sun" style={{fontSize:"20px"}}></i>; // Partly sunny
+    case 5:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Mostly cloudy
+    case 6:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Cloudy
+    case 7:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Overcast
+    case 8:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Overcast with low clouds
+    case 9:
+      return <i class="fas fa-smog" style={{fontSize:"20px"}}></i>; // Fog
+    case 10:
+    case 11:
+    case 12:
+    case 32:
+      return <i class="fas fa-cloud-rain" style={{fontSize:"20px"}}></i>; // Light rain, Rain, Possible rain, Rain shower
+    case 13:
+      return <i class="fas fa-poo-storm" style={{fontSize:"20px"}}></i>; // Rain shower
+    case 14:
+    case 33:
+      return <i class="fas fa-bolt" style={{fontSize:"20px"}}></i>; // Thunderstorm, Local thunderstorms
+    case 15:
+      return <i class="fas fa-bolt" style={{fontSize:"20px"}}></i>; // Local thunderstorms
+    case 16:
+    case 17:
+    case 18:
+    case 34:
+      return <i class="fas fa-snowflake" style={{fontSize:"20px"}}></i>; // Light snow, Snow, Possible snow, Snow shower
+    case 19:
+    case 35:
+      return <i class="fas fa-cloud-meatball" style={{fontSize:"20px"}}></i>; // Snow shower, Rain and snow
+    case 20:
+    case 21:
+    case 22:
+      return <i class="fas fa-cloud-meatball" style={{fontSize:"20px"}}></i>; // Rain and snow
+    case 23:
+    case 24:
+      return <i class="fas fa-tint" style={{fontSize:"20px"}}></i>; // Freezing rain, Possible freezing rain
+    case 25:
+      return <i class="fas fa-cloud-showers-heavy" style={{fontSize:"20px"}}></i>; // Hail
+    case 26:
+      return <i class="fas fa-moon" style={{fontSize:"20px"}}></i>; // Clear (night)
+    case 27:
+      return <i class="fas fa-cloud-moon" style={{fontSize:"20px"}}></i>; // Mostly clear (night)
+    case 28:
+      return <i class="fas fa-cloud-moon" style={{fontSize:"20px"}}></i>; // Partly clear (night)
+    case 29:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Mostly cloudy (night)
+    case 30:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Cloudy (night)
+    case 31:
+      return <i class="fas fa-cloud" style={{fontSize:"20px"}}></i>; // Overcast with low clouds (night)
+    case 36:
+      return <i class="fas fa-cloud-showers-heavy" style={{fontSize:"20px"}}></i>; // Possible freezing rain (night)
+    default:
+      return <i class="fas fa-question" style={{fontSize:"20px"}}></i>; // Default icon for unknown weather codes
+  }
+}
+
+function getWeatherimg(weatherCode) {
+  switch (weatherCode) {
+    case 2:
+      return <i class="fas fa-sun" style={{fontSize:"100px",}}></i>; // Sunny
+    case 3:
+      return <i class="fas fa-cloud-sun" style={{fontSize:"100px"}}></i>; // Mostly sunny
+    case 4:
+      return <i class="fas fa-cloud-sun" style={{fontSize:"100px"}}></i>; // Partly sunny
+    case 5:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Mostly cloudy
+    case 6:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Cloudy
+    case 7:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Overcast
+    case 8:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Overcast with low clouds
+    case 9:
+      return <i class="fas fa-smog" style={{fontSize:"100px"}}></i>; // Fog
+    case 10:
+    case 11:
+    case 12:
+    case 32:
+      return <i class="fas fa-cloud-rain" style={{fontSize:"100px"}}></i>; // Light rain, Rain, Possible rain, Rain shower
+    case 13:
+      return <i class="fas fa-poo-storm" style={{fontSize:"100px"}}></i>; // Rain shower
+    case 14:
+    case 33:
+      return <i class="fas fa-bolt" style={{fontSize:"100px"}}></i>; // Thunderstorm, Local thunderstorms
+    case 15:
+      return <i class="fas fa-bolt" style={{fontSize:"100px"}}></i>; // Local thunderstorms
+    case 16:
+    case 17:
+    case 18:
+    case 34:
+      return <i class="fas fa-snowflake" style={{fontSize:"100px"}}></i>; // Light snow, Snow, Possible snow, Snow shower
+    case 19:
+    case 35:
+      return <i class="fas fa-cloud-meatball" style={{fontSize:"100px"}}></i>; // Snow shower, Rain and snow
+    case 20:
+    case 21:
+    case 22:
+      return <i class="fas fa-cloud-meatball" style={{fontSize:"100px"}}></i>; // Rain and snow
+    case 23:
+    case 24:
+      return <i class="fas fa-tint" style={{fontSize:"100px"}}></i>; // Freezing rain, Possible freezing rain
+    case 25:
+      return <i class="fas fa-cloud-showers-heavy" style={{fontSize:"100px"}}></i>; // Hail
+    case 26:
+      return <i class="fas fa-moon" style={{fontSize:"100px"}}></i>; // Clear (night)
+    case 27:
+      return <i class="fas fa-cloud-moon" style={{fontSize:"100px"}}></i>; // Mostly clear (night)
+    case 28:
+      return <i class="fas fa-cloud-moon" style={{fontSize:"100px"}}></i>; // Partly clear (night)
+    case 29:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Mostly cloudy (night)
+    case 30:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Cloudy (night)
+    case 31:
+      return <i class="fas fa-cloud" style={{fontSize:"100px"}}></i>; // Overcast with low clouds (night)
+    case 36:
+      return <i class="fas fa-cloud-showers-heavy" style={{fontSize:"100px"}}></i>; // Possible freezing rain (night)
+    default:
+      return <i class="fas fa-question" style={{fontSize:"100px"}}></i>; // Default icon for unknown weather codes
+  }
+}
+
 
 const Weather=()=>
 {
   const [weather_hourly,setweather_hourly]=useState({});
   const [weather_current,setweather_current]=useState({});
+  const [weather_daily,setweather_daily]=useState({});
+
+  const getweekday=(dateString)=>
+  {
+    const date = new Date(dateString);
+    const dayOfWeek = date.toLocaleDateString('en-IN', { weekday: 'long' });
+    return dayOfWeek;
+  }
 
   useEffect(()=>
   {
@@ -70,15 +210,37 @@ const Weather=()=>
      console.log(error);
       }
     }
+    const fetchweather_daily=async ()=>
+    {
+     
+      try{
+        const API_URL = 'https://ai-weather-by-meteosource.p.rapidapi.com/daily?place_id=pune&timezone=auto&language=en&units=auto';
+        const response=await axios.get(API_URL,
+          {
+            headers: {
+              'X-RapidAPI-Key': API_KEY,
+              'X-RapidAPI-Host': 'ai-weather-by-meteosource.p.rapidapi.com',
+            },
+          });
+    
+        setweather_daily(response.data);
+      }
+      catch(error){
+     console.log(error);
+      }
+    }
     fetchweather_hourly();
     fetchweather_current();
+    fetchweather_daily();
   },[])
   const hourly_arr=weather_hourly?.hourly?.data;
+  const daily_arr=weather_daily?.daily?.data;
   const temp=weather_current?.current?.temperature;
+  const weather_img=weather_current?.current?.icon_num;
   const Humidity=weather_current?.current?.humidity;
   const pressure=weather_current?.current?.pressure;
   const summary=weather_current?.current?.summary;
-  console.log(pressure,Humidity);
+  console.log(pressure,Humidity,weather_img);
   return(
   <div>
           
@@ -101,7 +263,7 @@ const Weather=()=>
   <p className="mb-1 text-muted mb-0">{summary}</p>
 )}                 {temp && 
                     (<h2 className="display-2">
-                      <strong>{temp}</strong>
+                      <strong>{temp} °C</strong>
                     </h2>)
 }
                     {pressure && (
@@ -115,115 +277,51 @@ const Weather=()=>
                     
                   </div>
                   <div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
-                      width="150px"
-                    />
+                  <span class="weather-icon">{getWeatherimg(weather_img)}</span>
                   </div>
                 </div>
+               
+
                 <div className="d-flex justify-content-around text-center pb-3 pt-2">
-                  
-                  {
+                   
+                {
                       hourly_arr && hourly_arr.slice(0,5).map((object,index)=>(
 
   
           <div className="flex-column">
+            
                     <p className="small">
-                      <strong>{object.temperature}</strong>
+                      <strong>{object.temperature}°C</strong>
                     </p>
-                    <MDBIcon
-                      fas
-                      icon='sun'
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
+                    <span class="weather-icon">{getWeatherIcon(object.icon)}</span>
                     <p className="mb-0">
                       <strong>{object.date.split("T")[1].slice(0,5)}</strong>
                     </p>
           </div>
-         ))
-} 
-                </div>
-
-                <div className="d-flex justify-content-around text-center pb-3 pt-2">
-                    <div className="flex-column">
-                    <p className="small">
-                      <strong>21°C</strong>
-                    </p>
-                    <MDBIcon
-                      fas
-                      icon="sun"
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
-                    <p className="mb-0">
-                      <strong>Mon</strong>
-                    </p>
-                  </div>
-                  <div className="flex-column">
-                    <p className="small">
-                      <strong>20°C</strong>
-                    </p>
-                    <MDBIcon
-                      fas
-                      icon="sun"
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
-                    <p className="mb-0">
-                      <strong>Tue</strong>
-                    </p>
-                  </div>
-                  <div className="flex-column">
-                    <p className="small">
-                      <strong>16°C</strong>
-                    </p>
-                    <MDBIcon
-                      fas
-                      icon="cloud"
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
-                    <p className="mb-0">
-                      <strong>Wed</strong>
-                    </p>
-                  </div>
-                  <div className="flex-column">
-                    <p className="small">
-                      <strong>17°C</strong>
-                    </p>
-                    <MDBIcon
-                      fas
-                      icon="cloud"
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
-                    <p className="mb-0">
-                      <strong>Thu</strong>
-                    </p>
-                  </div>
-                  <div className="flex-column">
-                    <p className="small">
-                      <strong>18°C</strong>
-                    </p>
-                    <MDBIcon
-                      fas
-                      icon="cloud-showers-heavy"
-                      size="2x"
-                      className="mb-3"
-                      style={{ color: "#ddd" }}
-                    />
-                    <p className="mb-0">
-                      <strong>Fri</strong>
-                    </p>
-                  </div>
+                   ))
+               } 
                   
-                </div>
+        </div>
+
+        <div className="d-flex justify-content-around text-center pb-3 pt-2">
+        {
+                      daily_arr && daily_arr.slice(1,6).map((object,index)=>(
+
+  
+          <div className="flex-column">
+            
+                    <p className="small">
+                      <strong>{object.temperature}°C</strong>
+                    </p>
+                    <span class="weather-icon">{getWeatherIcon(object.icon)}</span>
+                    <p className="mb-0">
+                      <strong>{getweekday(object.day)}</strong>
+                    </p>
+          </div>
+                   ))
+               } 
+                  
+        </div>
           </MDBCardBody>
         </MDBCard>
 
