@@ -11,16 +11,19 @@ import FarmerProfile from './components/farmer/Profile';
 
 
 //User Components
-import UserHome from'./components/user/Home';
+import UserHome from './components/user/Home';
 import Buy from './components/user/Buy';
 import ViewProduct from './components/user/ViewProduct';
 import UserProfile from './components/user/Profile';
+
+//Footer
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <div>
       <Routes>
-        
+
         {/* login routes */}
         <Route path="/" element={<LoginHome />} />
         <Route path="/login" element={<Login />} />
@@ -38,6 +41,7 @@ const App = () => {
         <Route path="/user/profile" element={<UserProfile />} />
 
       </Routes>
+      <Footer />
     </div>
   )
 }

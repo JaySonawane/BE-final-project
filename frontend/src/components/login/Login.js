@@ -2,8 +2,9 @@ import Navbar from "./Navbar";
 const Login = () => {
     return (
         <div>
-            <Navbar />  
+            <Navbar />
             Login Component
+
         </div>
     )
 }
