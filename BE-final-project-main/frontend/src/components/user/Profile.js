@@ -13,6 +13,8 @@ import {
   
 } from "mdb-react-ui-kit";
 
+import image from '../images/img2.jpg'
+
 
 export default function Profile() {
  
@@ -44,7 +46,7 @@ export default function Profile() {
 
       console.log(Id);
 
-      navigate('/product/'+ Id);
+      navigate('/user/product/'+ Id);
     };
 
     React.useEffect(()=>
@@ -81,7 +83,7 @@ const user=object?.user;
 if(products && user) {return (
 <div>
     <Navbar />
-    <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
+    <div className="gradient-custom-2" style={{ backgroundImage: `url(${image})`}}>
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol lg="9" xl="7">

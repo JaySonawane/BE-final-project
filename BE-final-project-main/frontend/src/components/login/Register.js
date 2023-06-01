@@ -78,8 +78,8 @@ const Register = () => {
     return (
     <div class='background'>
         <Navbar />
-        <div className="ui container">
-            <div className="ui centered card" style={{width:'420px' ,paddingLeft:'22px',paddingRight:'22px',paddingTop: '20px',height: '495px'}}>
+        <div className="ui container" style={{marginTop:"75px"}}>
+            <div className="ui centered card" style={{width:'600px' ,paddingLeft:'22px',paddingRight:'22px',paddingTop: '20px',height: '500px'}}>
                 <form method="POST" className="form-card ui form custom-width" >
                     <div className="ui grid">
                         <div className="eight wide column">

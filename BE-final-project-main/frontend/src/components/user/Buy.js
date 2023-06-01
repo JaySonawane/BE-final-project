@@ -42,7 +42,7 @@ const fetcherproducts = (url) => fetch(url,
 
       console.log(Id);
 
-      navigate('/product/'+ Id);
+      navigate('/user/product/'+ Id);
     };
 
   

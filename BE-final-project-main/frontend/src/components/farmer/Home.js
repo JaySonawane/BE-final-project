@@ -22,7 +22,7 @@ import { useState,useEffect } from "react";
 
 
 
-const API_KEY='f2ffd78139mshb9d1ae88a54cbc8p1706e6jsn3e5a3020db5b';
+const API_KEY='d681f6b1f3msh03b361794e16737p1e1c6ejsnfdda40896114';
 
 function getWeatherIcon(weatherCode) {
   switch (weatherCode) {

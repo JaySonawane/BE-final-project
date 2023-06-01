@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="ui inverted menu" style={{ height: '50px', display: 'flex', alignItems: 'center' }}>
+        <div className="ui inverted menu" style={{ height: '50px', display: 'flex', alignItems: 'center',marginBottom:"0px" }}>
             <h3 className="item" style={{ marginTop: '15px' }}>
                 <i className='leaf icon'></i>
                 FARMER'S PORTAL

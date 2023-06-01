@@ -4,6 +4,8 @@ const { body } = module.require('express-validator')
 const productcontroller = require('../controller/product.js');
 
 
-router.get('/:prodID',productcontroller.feedbacks);
+router.get('/feedbacks/:prodID',productcontroller.feedbacks);
+
+router.get('/:prod_id',productcontroller.viewproduct);
 
 module.exports=router;

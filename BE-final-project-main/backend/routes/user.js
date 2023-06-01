@@ -49,7 +49,7 @@ router.post('/exporterLogin',usercontroller.login);
 
 router.get('/addproduct/:prod_id',isAuth,usercontroller.addproduct);
 
-router.get('/product/:prod_id',isAuth,usercontroller.viewproduct);
+//router.get('/product/:prod_id',isAuth,usercontroller.viewproduct);
 
 router.get('/products_display',isAuth,usercontroller.allproducts);
 

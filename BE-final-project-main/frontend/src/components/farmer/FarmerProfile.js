@@ -13,6 +13,8 @@ import {
   
 } from "mdb-react-ui-kit";
 
+import image from '../images/img2.jpg'
+
 
 export default function FarmerProfile() {
  // console.log(localStorage.getItem('token'));
@@ -48,7 +50,7 @@ export default function FarmerProfile() {
 
       console.log(Id);
 
-      navigate('/product/'+ Id);
+      navigate('/farmer/product/'+ Id);
     };
 
     React.useEffect(()=>
@@ -84,7 +86,7 @@ const user=object?.user;
 if(products && user) {return (
 <div>
     <Navbar />
-    <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
+    <div className="gradient-custom-2" style={{ backgroundImage: `url(${image})`}}>
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol lg="9" xl="7">

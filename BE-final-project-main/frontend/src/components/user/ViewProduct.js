@@ -25,21 +25,16 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';*/
 
 
 
-const fetcher = (prodID) => axios.get('http://localhost:8001/user/product/' + prodID,
-    {
+const fetcher = (prodID) => axios.get('http://localhost:8001/product/' + prodID,
+    /*{
         headers:
         {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    });
+    }*/);
 
-const fetcherfeedbacks = ({prodID}) => axios.get('http://localhost:8001/product/' + prodID,
-    {
-        headers:
-        {
-            Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-    });
+const fetcherfeedbacks = ({prodID}) => axios.get('http://localhost:8001/product/feedbacks/' + prodID,
+);
 
 const FeedbackForm = () => {
     const params = useParams();
@@ -271,7 +266,17 @@ const ViewProduct = () => {
                         </div>
                     </div>
                 </div>
-                <UserFeedbackList prodID={prodID} />
+                <div className="ui grid" style={{ marginTop: '0.5rem' }}>
+                    <div className="sixteen wide column">
+                        <div className="ui segment">
+                            <div className="ui header">
+                            <i class="fa fa-commenting" aria-hidden="true" style={{fontSize:"28px"}}></i> Feedbacks
+                            </div>
+                            <UserFeedbackList prodID={prodID} />
+                        </div>
+                    </div>
+                </div>
+                
                 <div className="ui grid" style={{ marginTop: '0.5rem' }}>
                     <div className="sixteen wide column">
                         <div className="ui segment">

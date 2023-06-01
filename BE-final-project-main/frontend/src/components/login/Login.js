@@ -79,7 +79,7 @@ const Login = () => {
     <div class='background'>
         <Navbar />
         <div className="ui container login-component">
-            <div className="ui centered card" style={{width:'350px' ,paddingLeft:'20px',paddingRight:'20px',paddingTop: '20px',height: '360px'}}>
+            <div className="ui centered card" style={{width:'350px' ,paddingLeft:'20px',paddingRight:'20px',paddingTop: '20px',height: '350px'}}>
                 <form method="POST" className="form-card ui form">
                     <div className="field">
                         <label>Email</label>
